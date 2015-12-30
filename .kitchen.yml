@@ -1,0 +1,24 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: false
+
+platforms:
+  - name: centos-7
+    driver_config:
+      provision_command:
+        - >
+          curl -L -O https://www.opscode.com/chef/install.sh &&
+          bash install.sh -v <%= ENV.fetch 'CHEF_VERSION', '12.5' %>
+      run_command: /usr/sbin/init
+      privileged: true
+
+suites:
+  - name: default
+    data_bags_path: 'test/integration/default/data_bags'
+    run_list:
+      - recipe[rotate-passwords-test]
+    attributes:

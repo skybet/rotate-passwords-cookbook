@@ -1,0 +1,36 @@
+require 'securerandom'
+require 'time'
+
+module RotatePasswords
+  module Helpers
+    # def self.included(_klass)
+    #   require 'chef-vault'
+    # rescue LoadError
+    #   chef_gem 'chef-vault' do
+    #     compile_time true
+    #   end
+    #   require 'chef-vault'
+    # end
+
+    # def rotate_password(user, vault_name, node_name)
+    # end
+
+    def self.getpasswd(password_length)
+      bytes = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+      plaintext = (0...password_length).map { bytes[rand(bytes.length)] }.join
+      return plaintext.crypt("$6$#{SecureRandom.hex}")
+    end
+
+    def self.check_age(user, max_age)
+      today = Time.now.utc.to_date
+      days = open('/etc/shadow').grep(/#{user}/).to_s.split(':')[2]
+      last_set = Time.parse('1970-01-01').utc.to_date + days.to_i
+      age = (today - last_set).to_i
+      if age > max_age
+        return true
+      else
+        return false
+      end
+    end
+  end
+end
