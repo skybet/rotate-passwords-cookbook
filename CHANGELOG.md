@@ -1,13 +1,10 @@
-rotate-passwords CHANGELOG
-==========================
+## 2016-02-10
+### Summary
+Initial release.
 
-This file is used to list changes made in each version of the rotate-passwords cookbook.
-
-0.1.0
------
-- [your_name] - Initial release of rotate-passwords
-
-- - -
-Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
-
-The [Github Flavored Markdown page](http://github.github.com/github-flavored-markdown/) describes the differences between markdown on github and standard markdown.
+#### Features
+- Provides resource for rotating a user's passwords.
+ - Can define how old a password can be before it is rotated.
+ - Define the length of the randomly generated password.
+ - Define the Vault that should be used to store the password.
+ - Define the Admins that can access the vaulted password.
