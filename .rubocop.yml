@@ -1,0 +1,6 @@
+Metrics/LineLength:
+  Exclude:
+    - 'Berksfile'
+Metrics/AbcSize:
+  Exclude:
+    - 'libraries/helpers.rb'

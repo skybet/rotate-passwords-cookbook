@@ -21,6 +21,8 @@ ruby_block 'set password age' do
   end
 end
 
+chef_data_bag 'vault-passwords'
+
 rotate_password 'root' do
-  vault_admins 'chefserver'
+  vault_admins 'zero-client'
 end

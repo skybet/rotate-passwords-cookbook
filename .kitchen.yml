@@ -4,21 +4,21 @@ driver:
 
 provisioner:
   name: chef_zero
-  require_chef_omnibus: false
+  require_chef_omnibus: true
+  client_rb:
+    node_name: zero-client
+    client_key: /tmp/kitchen/clients/zero-client.pem
 
 platforms:
   - name: centos-7
     driver_config:
       provision_command:
-        - >
-          curl -L -O https://www.opscode.com/chef/install.sh &&
-          bash install.sh -v <%= ENV.fetch 'CHEF_VERSION', '12.5' %>
       run_command: /usr/sbin/init
       privileged: true
+      hostname: kitchen
 
 suites:
   - name: default
-    data_bags_path: 'test/integration/default/data_bags'
     run_list:
       - recipe[rotate-passwords-test]
     attributes:

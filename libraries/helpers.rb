@@ -2,6 +2,7 @@ require 'securerandom'
 require 'time'
 
 module RotatePasswords
+  # Helper module that does the hard work
   module Helpers
     # def self.included(_klass)
     #   require 'chef-vault'
@@ -16,9 +17,9 @@ module RotatePasswords
     # end
 
     def self.getpasswd(password_length)
-      bytes = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+      bytes = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
       plaintext = (0...password_length).map { bytes[rand(bytes.length)] }.join
-      return plaintext.crypt("$6$#{SecureRandom.hex}")
+      plaintext.crypt("$6$#{SecureRandom.hex}")
     end
 
     def self.check_age(user, max_age)
