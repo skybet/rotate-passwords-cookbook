@@ -25,13 +25,13 @@ For each user you want to rotate the password for you must declare a `rotate_pas
 
 Each `rotate_password` has the following attributes:
 
-| Attribute       | Type             | Description                                                      | Default           |
-|:---------------:|:----------------:|:----------------------------------------------------------------:|:-----------------:|
-| name            | String or Symbol | Resource name.                                                   | `N/A`             |
-| max_age         | Integer          | How old the defined user's password can be before it is rotated. | `30`              |
-| password_length | Integer          | The length of the randomly generated password.                   | `30`              |
-| vault_name      | String           | Description of the Yum repo.                                     | `vault-passwords` |
-| vault_admins    | String or Array  | Base URL of the Yum repo.                                        | `N/A`             |
+| Attribute         | Type                 | Description                                                      | Default           |
+|:-----------------:|:--------------------:|:----------------------------------------------------------------:|:-----------------:|
+| `name`            | `String` or `Symbol` | Resource name.                                                   | `N/A`             |
+| `max_age`         | `Integer`            | How old the defined user's password can be before it is rotated. | `30`              |
+| `password_length` | `Integer`            | The length of the randomly generated password.                   | `30`              |
+| `vault_name`      | `String`             | Description of the Yum repo.                                     | `vault-passwords` |
+| `vault_admins`    | `String` or `Array`  | Base URL of the Yum repo.                                        | `N/A`             |
 
 To rotate the password of the root user for example:
 
