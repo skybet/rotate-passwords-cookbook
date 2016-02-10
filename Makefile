@@ -1,3 +1,5 @@
+default : check kitchen
+
 check : rubocop foodcritic
 
 test : rubocop foodcritic kitchen

@@ -1,6 +1,8 @@
 ---
 driver:
   name: docker
+  privileged: true
+  hostname: kitchen
 
 provisioner:
   name: chef_zero
@@ -11,11 +13,11 @@ provisioner:
 
 platforms:
   - name: centos-7
-    driver_config:
-      provision_command:
-      run_command: /usr/sbin/init
-      privileged: true
-      hostname: kitchen
+  - name: centos-6
+  - name: ubuntu-14.04
+  - name: ubuntu-12.04
+  - name: debian-8
+  - name: debian-7
 
 suites:
   - name: default

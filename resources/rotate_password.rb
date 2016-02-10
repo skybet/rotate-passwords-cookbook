@@ -6,11 +6,9 @@ property :password_length, Fixnum, required: true, default: 30
 property :vault_name, String, required: true, default: 'vault-passwords'
 property :vault_admins, [String, Array], required: true
 
+default_action :rotate
+
 action :rotate do
-  # execute real_user do
-  #   command RotatePasswords::Helpers.rotate_password(real_user, vault_name, "#{node['name']}")
-  #   only_if RotatePasswords::Helpers.check_age(real_user, max_age)
-  # end
   include_recipe 'chef-vault::default'
 
   password = RotatePasswords::Helpers.getpasswd(password_length)

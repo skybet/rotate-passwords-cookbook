@@ -4,18 +4,6 @@ require 'time'
 module RotatePasswords
   # Helper module that does the hard work
   module Helpers
-    # def self.included(_klass)
-    #   require 'chef-vault'
-    # rescue LoadError
-    #   chef_gem 'chef-vault' do
-    #     compile_time true
-    #   end
-    #   require 'chef-vault'
-    # end
-
-    # def rotate_password(user, vault_name, node_name)
-    # end
-
     def self.getpasswd(password_length)
       bytes = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
       plaintext = (0...password_length).map { bytes[rand(bytes.length)] }.join
