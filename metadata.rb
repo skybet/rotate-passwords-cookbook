@@ -11,7 +11,7 @@ version '1.0.0'
 end
 supports 'ubuntu', '= 14.04'
 supports 'ubuntu', '= 12.04'
-supports 'debian', '>= 7'
+supports 'debian', '>= 7.0'
 
 source_url 'https://github.com/kemra102/rotate-passwords-cookbook' if
   respond_to?(:source_url)
