@@ -6,6 +6,13 @@ description 'Installs/Configures rotate-passwords'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '1.0.0'
 
+%w(centos oracle redhat scientific).each do |os|
+  supports os, '>= 6.0'
+end
+supports 'ubuntu', '= 14.04'
+supports 'ubuntu', '= 12.04'
+supports 'debian', '>= 7'
+
 source_url 'https://github.com/kemra102/rotate-passwords-cookbook' if
   respond_to?(:source_url)
 issues_url 'https://github.com/kemra102/rotate-passwords-cookbook/issues' if
