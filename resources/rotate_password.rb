@@ -8,19 +8,25 @@ property :vault_admins, [String, Array], required: true
 
 default_action :rotate
 
+def real_name
+  name
+end
+
 action :rotate do
   include_recipe 'chef-vault::default'
 
   password = RotatePasswords::Helpers.getpasswd(password_length)
 
-  chef_vault_secret "set-password-for-#{name}" do
-    id "#{node['hostname']}-#{name}"
+  int_real_name = real_name
+
+  chef_vault_secret "set-password-for-#{int_real_name}" do
+    id "#{node['hostname']}-#{int_real_name}"
     data_bag vault_name
     admins vault_admins
-    search "name:#{node['hostname']}"
+    search "name:#{node['name']}"
     raw_data('password' => password)
     action :create
-    only_if { RotatePasswords::Helpers.check_age(name, max_age) }
+    only_if { RotatePasswords::Helpers.check_age(int_real_name, max_age) }
   end
 
   user name do
