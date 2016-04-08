@@ -15,11 +15,8 @@ module RotatePasswords
       days = open('/etc/shadow').grep(/#{user}/).to_s.split(':')[2]
       last_set = Time.parse('1970-01-01').utc.to_date + days.to_i
       age = (today - last_set).to_i
-      if age > max_age
-        return true
-      else
-        return false
-      end
+      return true if age > max_age
+      false
     end
   end
 end

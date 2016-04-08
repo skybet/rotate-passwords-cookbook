@@ -23,7 +23,7 @@ action :rotate do
     id "#{node['hostname']}-#{int_real_name}"
     data_bag vault_name
     admins vault_admins
-    search "name:#{node['name']}"
+    search "name:#{node.name}"
     raw_data('password' => password)
     action :create
     only_if { RotatePasswords::Helpers.check_age(int_real_name, max_age) }
