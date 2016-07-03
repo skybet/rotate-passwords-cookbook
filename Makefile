@@ -5,16 +5,16 @@ check : rubocop foodcritic
 test : rubocop foodcritic kitchen
 
 travis : check
-	kitchen verify
+	/opt/chefdk/bin/kitchen verify
 
 rubocop :
-	rubocop .
+	/opt/chefdk/embedded/bin/rubocop .
 
 foodcritic :
-	foodcritic -P -f any .
+	/opt/chefdk/embedded/bin/foodcritic -P -f any .
 
 kitchen :
-	kitchen test
+	/opt/chefdk/bin/kitchen test
 
 .PHONY:
 	travis test check rubocop foodcritic kitchen

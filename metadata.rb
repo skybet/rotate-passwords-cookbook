@@ -9,7 +9,7 @@ version '1.0.1'
 %w(centos oracle redhat scientific).each do |os|
   supports os, '>= 6.0'
 end
-supports 'ubuntu', '>= 12.04'
+supports 'ubuntu', '>= 14.04'
 supports 'debian', '>= 7.0'
 
 source_url 'https://github.com/kemra102/rotate-passwords-cookbook' if
